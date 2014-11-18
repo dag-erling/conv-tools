@@ -1,0 +1,102 @@
+.\"-
+.\" Copyright (c) 2012-2014 The University of Oslo
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\" 3. The name of the author may not be used to endorse or promote
+.\"    products derived from this software without specific prior written
+.\"    permission.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.Dd November 18, 2014
+.Dt MIXCONV 1
+.Sh NAME
+.Nm mixconv
+.Nd transcode mixed-encoding files
+.Sh SYNOPSIS
+.Nm
+.Op Fl dv
+.Op Fl f Ar charset
+.Op Fl o Ar outfile
+.Op Ar file ...
+.Sh DESCRIPTION
+The
+.Nm
+utility reads text encoded in a mixture of UTF-8 and a non-UTF 8-bit
+encoding and converts it to UTF-8.
+.Pp
+The non-UTF 8-bit encoding is assumed to be Latin-1, unless a
+different encoding is specified with the
+.Fl f
+option.
+.Pp
+The following options are available:
+.Bl -tag -width indent
+.\" .It Fl 7
+.\" Print lines which are pure 7-bit ASCII.
+.\" .It Fl 8
+.\" Print lines which contain non-ASCII characters but are not valid
+.\" UTF-8.
+.It Fl d
+Show debugging information.
+This option can be specified multiple times to increase the level of
+detail.
+.It Fl f Ar charset
+Specify the assumed character set for non-ASCII, non-UTF-8 text.
+The default is
+.Dq iso8859-1 .
+.It Fl h
+Print a usage message and exit.
+.\" .It Fl u
+.\" Print lines which contain non-ASCII characters and are valid UTF-8
+.\" but not WTF-8.
+.It Fl v
+Print the source reversion number and exit.
+.\" .It Fl w
+.\" Print lines which seem to be WTF-8-encoded.
+.El
+.Sh SEE ALSO
+.Xr dirconf 1 ,
+.Xr iconv 1 ,
+.Xr regex 3 .
+.Sh AUTHORS
+The
+.Nm
+utility and this manual page were written by
+.An Dag-Erling Sm\(/orgrav Aq des@des.no
+for the University of Oslo.
+.\" .Sh NOTES
+.\" The
+.\" .Nm
+.\" utility works by attempting to decode each name as if it were a
+.\" sequence of UTF-8 characters.
+.\" It is possible, but highly unlikely, that a random string of
+.\" characters in a non-UTF single-byte encoding would look like a valid
+.\" UTF-8 sequence.
+.\" .Pp
+.\" Reliable detection of WTF-8 is only possible if the original 8-bit
+.\" encoding is known.
+.\" .Pp
+.\" The exclusion filter is applied
+.\" .Em before
+.\" name conversion.
+.\" Character classes are unlikely to work as expected on unconverted
+.\" names.

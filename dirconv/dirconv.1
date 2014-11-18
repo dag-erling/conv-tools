@@ -1,0 +1,135 @@
+.\"-
+.\" Copyright (c) 2013-2014 The University of Oslo
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\" 3. The name of the author may not be used to endorse or promote
+.\"    products derived from this software without specific prior written
+.\"    permission.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.Dd November 18, 2014
+.Dt DIRCONV 1
+.Sh NAME
+.Nm dirconv
+.Nd locate and transcode mixed-encoding file names
+.Sh SYNOPSIS
+.Nm
+.Op Fl 078dFhnpruvw
+.Op Fl f Ar charset
+.Op Fl x Ar regex
+.Op Ar path ...
+.Sh DESCRIPTION
+The
+.Nm
+utility recursively scans the specified path(s) and classifies files
+and directories according to whether their names are pure 7-bit ASCII,
+non-ASCII but valid UTF-8, double-UTF-8 (WTF-8), or neither.
+.Pp
+Names in the latter category are assumed to be Latin-1, unless a
+different encoding is specified with the
+.Fl f
+option.
+.Pp
+By default, the
+.Nm
+utility then prints the names that are neither pure 7-bit ASCII nor
+valid UTF-8.
+.Pp
+The following options are available:
+.Bl -tag -width indent
+.It Fl 0
+Print a NUL character rather than a newline after each path.
+This option has no effect if the
+.Fl n
+option was also specified.
+.It Fl 7
+Select names that are pure 7-bit ASCII.
+.It Fl 8
+Select names that contain non-ASCII characters but are not valid
+UTF-8.
+This is the default unless the
+.Fl 7 ,
+.Fl u
+and / or
+.Fl w
+options are specified.
+.It Fl d
+Show debugging information.
+This option can be specified multiple times to increase the level of
+detail.
+.It Fl F
+In conjunction with the
+.Fl r
+option, force renaming a file when the target already exists.
+.It Fl f Ar charset
+Specify the assumed character set for non-ASCII, non-UTF-8 names.
+The default is
+.Dq iso8859-1 .
+.It Fl h
+Print a usage message and exit.
+.It Fl n
+In conjunction with the
+.Fl r
+option, show what would have happened, but do not actually rename any
+files.
+.It Fl p
+Print the selected names.
+.It Fl r
+Attempt to convert the selected names to UTF-8 and rename the files
+and directories.
+.It Fl u
+Select names which contain non-ASCII characters and are valid UTF-8
+but not WTF-8.
+.It Fl v
+Print the source reversion number and exit.
+.It Fl w
+Select names which seem to be WTF-8-encoded.
+.It Fl x Ar regex
+Do not inspect files and directories whose unconverted names match the
+specified POSIX extended regular expression.
+.El
+.Sh SEE ALSO
+.Xr iconv 1 ,
+.Xr regex 3 .
+.Sh AUTHORS
+The
+.Nm
+utility and this manual page were written by
+.An Dag-Erling Sm\(/orgrav Aq des@des.no
+for the University of Oslo.
+.Sh NOTES
+The
+.Nm
+utility works by attempting to decode each name as if it were a
+sequence of UTF-8 characters.
+It is possible, but highly unlikely, that a random string of
+characters in a non-UTF single-byte encoding would look like a valid
+UTF-8 sequence.
+.Pp
+Reliable detection of WTF-8 is only possible if the original 8-bit
+encoding is known.
+.Pp
+The exclusion filter is applied
+.Em before
+name conversion.
+Character classes are unlikely to work as expected on unconverted
+names.

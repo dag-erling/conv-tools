@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. ./autogen.sh
+
+./configure \
+    --enable-debugging-symbols \
+    --enable-developer-warnings \
+    --enable-werror \
+    "$@"
