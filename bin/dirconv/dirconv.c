@@ -186,7 +186,7 @@ non_utf8:
 }
 
 static char *
-convertstr(iconv_t *conv, char *str)
+convertstr(iconv_t conv, char *str)
 {
 	char *cip, *cop;	/* conversion in / out buffer pointers */
 	size_t cilen, colen;	/* conversion in / out buffer lengths */
