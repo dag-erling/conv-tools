@@ -1,0 +1,28 @@
+
+		      Encoding conversion tools
+		      -------------------------
+
+The mixconv utility reads a mixed-encoding text file, analyzes each
+line to determine whether it is in 7-bit ASCII, an 8-bit encoding,
+UTF-8 or WTF-8, converts everything to UTF-8 and prints the result to
+standard output.
+
+The dirconv utility scans a directory structure, analyzes each file
+and directory name to determine whether it is in 7-bit ASCII, an 8-bit
+encoding, UTF-8 or WTF-8, converts everything to UTF-8, and renames
+the files and directories accordingly.
+
+The conv-tools utilities were originally written for for one-off use
+at the University of Oslo and subsequently released under the 3-clause
+BSD license.
+
+The latest version of the source code is available from Github:
+
+  https://github.com/dag-erling/conv-tools
+
+Bugs can be reported as issues in Github:
+
+  https://github.com/dag-erling/conv-tools/issues
+
+If you do not have a Github account and do not wish to create one, you
+can also report bugs by email to Dag-Erling Smørgrav <des@des.no>.

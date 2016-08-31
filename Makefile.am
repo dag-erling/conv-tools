@@ -4,5 +4,5 @@ SUBDIRS = lib bin
 
 EXTRA_DIST = \
 	LICENSE \
-	README.md \
+	README \
 	autogen.sh
