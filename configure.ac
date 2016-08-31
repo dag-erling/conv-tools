@@ -4,7 +4,7 @@ AC_INIT([conv-tools], [20160831], [des@des.no], [conv-tools],
 AC_CONFIG_SRCDIR([lib/conv-tools.h])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([foreign])
-AM_CONFIG_HEADER([config.h])
+AC_CONFIG_HEADERS([config.h])
 
 ############################################################################
 #
