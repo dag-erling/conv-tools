@@ -49,7 +49,8 @@ AC_ARG_ENABLE([werror],
 AC_CONFIG_FILES([
     Makefile
     lib/Makefile
-    dirconv/Makefile
-    mixconv/Makefile
+    bin/Makefile
+    bin/dirconv/Makefile
+    bin/mixconv/Makefile
 ])
 AC_OUTPUT
