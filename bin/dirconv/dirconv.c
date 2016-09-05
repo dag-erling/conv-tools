@@ -378,7 +378,7 @@ dirconv(const char *path)
 	size_t pathsize;
 	int pathlen;
 
-	pathsize = PATH_MAX;
+	pathsize = pathconf(path, _PC_PATH_MAX);
 	if ((pathbuf = malloc(pathsize)) == NULL)
 		err(1, "malloc()");
 	if ((realpath(path, pathbuf)) == NULL) {
