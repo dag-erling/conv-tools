@@ -4,3 +4,4 @@ bin_PROGRAMS = dirconv
 dirconv_LDADD = $(ICONV_LIBS)
 dist_man1_MANS = dirconv.1
 TESTS = t_dirconv
+EXTRA_DIST = $(TESTS)

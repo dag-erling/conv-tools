@@ -4,3 +4,4 @@ bin_PROGRAMS = mixconv
 mixconv_LDADD = $(ICONV_LIBS)
 dist_man1_MANS = mixconv.1
 TESTS = t_mixconv
+EXTRA_DIST = $(TESTS)
