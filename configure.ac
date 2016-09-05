@@ -1,5 +1,5 @@
 AC_PREREQ([2.63])
-AC_INIT([conv-tools], [20160831], [des@des.no], [conv-tools],
+AC_INIT([conv-tools], [20160905], [des@des.no], [conv-tools],
   [http://github.com/dag-erling/conv-tools])
 AC_CONFIG_SRCDIR([lib/conv-tools.h])
 AC_CONFIG_MACRO_DIR([m4])
