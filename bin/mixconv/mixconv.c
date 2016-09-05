@@ -178,6 +178,7 @@ self_test(iconv_t conv)
 	FILE *infile, *outfile;
 	char outbuf[1024];
 
+	printf("1..%d\n", 1);
 	if ((infile = fmemopen(test_input, sizeof test_input, "r")) == NULL)
 		err(1, "fmemopen()");
 	if ((outfile = fmemopen(outbuf, sizeof outbuf, "w")) == NULL)
@@ -187,7 +188,9 @@ self_test(iconv_t conv)
 	fclose(infile);
 	fclose(outfile);
 	if (memcmp(outbuf, test_output, sizeof test_output) != 0)
-		errx(1, "test ouput does not match expected output");
+		printf("not ok %d\n", 1);
+	else
+		printf("ok %d\n", 1);
 }
 
 static void
