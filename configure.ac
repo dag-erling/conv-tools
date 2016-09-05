@@ -43,6 +43,18 @@ AC_ARG_ENABLE([werror],
 
 ############################################################################
 #
+# Extra libraries
+#
+
+save_LIBS="${LIBS}"
+LIBS=""
+AC_SEARCH_LIBS([iconv_open], [iconv])
+ICONV_LIBS="${LIBS}"
+LIBS="${save_LIBS}"
+AC_SUBST(ICONV_LIBS)
+
+############################################################################
+#
 # Output
 #
 
